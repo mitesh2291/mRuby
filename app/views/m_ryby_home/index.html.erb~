@@ -1,0 +1,2 @@
+<% @output=user_tweet %>
+<%= output%>
