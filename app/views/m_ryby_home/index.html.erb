@@ -1,3 +1,3 @@
-<%=user_tweet.each { |tweet| tweet.to_s} %>
-
-
+<% form_tag :controller=> :m_ryby_home, :action => :user_tweet do %>
+    <%= text_field_tag :search_string, params[:search_string] %>
+<% end %>

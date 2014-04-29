@@ -1,0 +1,19 @@
+<table>
+  <thead>
+  <tr>
+    <th>Tweet</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @tweet.each do |tweet| %>
+      <tr>
+        <td><%= tweet.text %></td>
+        <br>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to "Back", :controller => "tweet", :action => "index" %>

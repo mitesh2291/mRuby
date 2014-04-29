@@ -3,7 +3,9 @@ module ApplicationHelper
 
     #client.update("I just posted a status update via the Twitter Ruby Gem !")
     #redirect_to request.referer, :notice => 'Tweet successfully posted'
-
+  def test
+    return 'hello'
+  end
 
 
   def user_tweet
@@ -35,14 +37,15 @@ module ApplicationHelper
      # return tweet.text
     #end
 
-
-      return client.search('from:imVkohli').take(10)
+     client.search('from:imVkohli').take(10) do |tweet|
+        return tweet.text
+    end
 
       #`return tweet.text
       #`end
      # return tweet.text
 
-    #client.user_timeline('sachin_rt') do |tweet|
+    #client.statuses('sachin_rt') do |tweet|
      # return tweet.text
       #end
 

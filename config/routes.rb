@@ -1,9 +1,17 @@
 MRuby::Application.routes.draw do
-  get "m_ryby_home/index"
+
+  get 'm_ryby_home/index'
+  get 'tweet/index'
+  get 'tweet/show'
   #root "m_ryby_home_controller/index"
   resources :keywords
+   resources :users
+  resource :tweet do
+    # Route GET /user/admin_login
+    get 'user_tweet', :on => :collection
+  end
+ # map.connect '/m_ryby_home/user_tweet', :controller => :m_ryby_home, :action => :user_tweet
 
-  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
