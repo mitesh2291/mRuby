@@ -1,0 +1,15 @@
+
+<form accept-charset="UTF-8" action="/bing/show" method="get">
+  <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <label for="q">Bing Search :</label>
+  <input id="q" name="q" type="text" />
+  <input name="commit" type="submit" value="bing Search" />
+</form>
+
+<script>
+    function send()
+    {
+        var text = $("#q").val();
+        $.get('/app/bing/show', { search_text: text});
+    }
+</script>

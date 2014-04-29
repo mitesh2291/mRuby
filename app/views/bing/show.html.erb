@@ -1,0 +1,17 @@
+<table>
+  <thead>
+  <tr>
+    <th>Bing Search</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @bing.to_s %></td>
+        <br>
+      </tr>
+  </tbody>
+</table>
+<br>
+<%= link_to "Back", :controller => "bing", :action => "index" %>
