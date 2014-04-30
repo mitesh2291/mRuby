@@ -1,7 +1,7 @@
 class Bing
   include MongoMapper::Document
 
-  key :keyword, String
+  key :searchKeyword, String
   key :searchResult,  String
 
 end

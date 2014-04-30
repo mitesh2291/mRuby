@@ -1,0 +1,25 @@
+<h1>Listing Bing Search</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Result</th>
+  </tr>
+  </thead>
+
+  <% @tt= 'from database' %><br>
+  <%=@tt%>
+  <tbody>
+
+<% @SearchResult.each do |str| %>
+      <tr>
+        <td><%= str.searchResult %></td>
+      </tr>
+      <tr><br></tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "Back", :controller => "bing", :action => "index" %>

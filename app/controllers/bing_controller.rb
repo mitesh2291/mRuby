@@ -9,35 +9,54 @@ end
   def show
 
     require 'net/http'
+    #Check Keyword entry is there in database or not
+    @count=Bing.where(:searchKeyword=>params['q']).count
+    @check
+    #if its in database retrieve from database
+    if @count < 1 then
 
-    accountKey = 'ZP8PLNDGsSo/B2GeAgisJr8zxou0If59k18A+RXV1fQ'
-    @str='%27'
-    #params['search_text'].to_s.strip.each { |s| @str=@str+s+'%20' }
+      #else Retrieve from Web
 
-    params['q'].to_s.split(' ').each { |s| @str=@str+'%20'+s }
+      accountKey = 'ZP8PLNDGsSo/B2GeAgisJr8zxou0If59k18A+RXV1fQ'
+      @str='%27'
+      #params['search_text'].to_s.strip.each { |s| @str=@str+s+'%20' }
+      params['q'].to_s.split(' ').each { |s| @str=@str+'%20'+s }
+      @str=@str + '%27&$format=json'
 
+      #@final='https://api.datamarket.azure.com/Bing/Search/v1/Composite?Sources=%27web%27&Query=%27ruby%20on%20rails%27&$format=json'
 
+      @final='https://api.datamarket.azure.com/Bing/Search/v1/Composite?Sources=%27web%27&Query='+@str
 
+      url=@final
 
-    @str=@str + '%27&$format=json'
-    #url = 'https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Query=%27xbox%27&$top=50&$format=json'
-    #@padding='%27web%27&Query=%27ruby%20on%20rails%27'
-    #@final='https://api.datamarket.azure.com/Bing/Search/v1/Composite?Sources=%27web%27&Query=%27ruby%20on%20rails%27&$format=json'
-    @final='https://api.datamarket.azure.com/Bing/Search/v1/Composite?Sources=%27web%27&Query='+@str
+      uri = URI(url)
 
+      req = Net::HTTP::Get.new(uri.request_uri)
 
-    url=@final
+      req.basic_auth '', accountKey
 
-    uri = URI(url)
+      res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https') { |http|
+        http.request(req)
+      }
+      # SearchResult contain data from web and store it to database
+      @WebSearchResult= res.body
+      #@SearchResult='hello i m mitesh'
+      Bing.new(:searchKeyword=>params['q'], :searchResult=> @WebSearchResult).save
+    else
 
-    req = Net::HTTP::Get.new(uri.request_uri)
-    req.basic_auth '', accountKey
+      #SarchResult contain data from database not web
+      #@SearchResult=Bing.where(:searchKeyword=>params['q'])
+      @SearchResult=Bing.where(:searchKeyword=>params['q'])
+      render :dShow
+      #return @SearchResult
+    end
+  end
 
-    res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https'){|http|
-      http.request(req)
-    }
-    @bing= res.body
+  def dShow
+    #@databaseSearch=Bing.find_by_searchKeyword(params['j'])
+   #@databaseSearch=Bing.where(:searchKeyword=>params['j'])
 
-
+    return @SearchResult
+    #@test=params['j']
   end
 end

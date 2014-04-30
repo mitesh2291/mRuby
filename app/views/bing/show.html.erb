@@ -6,12 +6,12 @@
   </tr>
   </thead>
 
+  <% @jmc= 'from web' %>
+  <%=@jmc%><br>
   <tbody>
-      <tr>
-        <td><%= @bing.to_s %></td>
-        <br>
-      </tr>
-  </tbody>
+
+           <%= @WebSearchResult %>
+      </tbody>
 </table>
 <br>
 <%= link_to "Back", :controller => "bing", :action => "index" %>

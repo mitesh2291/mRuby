@@ -5,6 +5,7 @@ MRuby::Application.routes.draw do
   get 'tweet/show'
   get 'bing/index'
   get 'bing/show'
+  get 'bing/dShow'
   #root "m_ryby_home_controller/index"
   resources :keywords
    resources :users
