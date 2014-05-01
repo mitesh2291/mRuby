@@ -27,7 +27,7 @@ Things you may want to cover:
 
 -Intigrate Bing Azure API to query bing search engine
     Work Flow:
-        -Usear Query a search to toll
+        -User Query a search to toll
         -tool check a result in database for that keyword
         -if result is there ,data will be populated from the database
         -if result for that keyword is not present in database then tool retieve it from web and store it to database
@@ -40,7 +40,7 @@ Things you may want to cover:
           -if result is there ,tweet blog's id will be populated from the database
           -if blogs for that keyword is not present in database then tool retieve it from web, display text blog to view
             and store it's id to database
-          -Again whenever that keyword is searched database stored blog's id are populated.
+          -Again whenever that keyword is searched database stored blog's id is populated.
 
 * Work may remain :
     -bing search result is in json format.
