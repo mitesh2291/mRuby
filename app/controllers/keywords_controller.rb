@@ -1,6 +1,6 @@
 class KeywordsController < ApplicationController
   before_action :set_keyword, only: [:show, :edit, :update, :destroy]
-  http_basic_authenticate_with name: "mRubyKeywordAdmin", password: "mRubyKeywordAdmin"
+  http_basic_authenticate_with name: "admin", password: "admin"
   # GET /keywords
   # GET /keywords.json
   def index

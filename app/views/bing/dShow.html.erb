@@ -3,14 +3,12 @@
 <table>
   <thead>
   <tr>
-    <th>Result</th>
+    <th></th><br>
   </tr>
   </thead>
 
-  <% @tt= 'from database' %><br>
-  <%=@tt%>
   <tbody>
-
+<p>Result from Database :</p>
 <% @SearchResult.each do |str| %>
       <tr>
         <td><%= str.searchResult %></td>

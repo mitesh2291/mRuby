@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  http_basic_authenticate_with name: "mRubyUserAdmin", password: "mRubyUserAdmin"
+  http_basic_authenticate_with name: "admin", password: "admin"
   # GET /users
   # GET /users.json
   def index

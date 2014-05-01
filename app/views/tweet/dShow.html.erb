@@ -7,10 +7,10 @@
   </thead>
 
   <tbody>
-  <p>Tweet from Web :</p>
-  <% @tweet.each do |tweet| %>
+  <p>Tweet from Database</p>
+  <% @TweetSearchResult.each do |tweet| %>
       <tr>
-        <td><%= tweet.text %></td>
+        <td><%= tweet.to_s %></td>
         <br>
       </tr>
   <% end %>
